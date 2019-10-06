@@ -30,6 +30,7 @@ class UI {
     deleteProduct(element) { 
         if(element.name === 'delete') {
             element.parentElement.parentElement.parentElement.remove()
+            this.showMessage('Product Deleted Successfully', 'success');
         }
     }
 
