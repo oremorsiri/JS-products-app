@@ -32,6 +32,19 @@ class UI {
             element.parentElement.parentElement.parentElement.remove()
         }
     }
+
+    showMessage(message, cssClass) {
+        const div = document.createElement('div');
+        div.className = `alert alert-${cssClass} mt-2`;
+        div.appendChild(document.createTextNode(message));
+        // Para que se muestre en el DOM
+        const container = document.querySelector('.container');
+        const app = document.querySelector('#App');
+        container.insertBefore(div, app);
+        setTimeout(function() {
+            document.querySelector('.alert').remove();
+        }, 3000)
+    }
 }
 
 // DOM Events
@@ -47,6 +60,7 @@ document.getElementById('product-form').addEventListener('submit', function (e) 
     const ui = new UI();
     ui.addProduct(product);
     ui.resetForm();
+    ui.showMessage('Product Added Successfully', 'success');
 
     e.preventDefault();
 })
@@ -55,5 +69,4 @@ document.getElementById('product-form').addEventListener('submit', function (e) 
 document.getElementById('product-list').addEventListener('click', function(e) {
     const ui = new UI();
     ui.deleteProduct(e.target);
-
 })
