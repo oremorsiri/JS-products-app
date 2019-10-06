@@ -59,6 +59,13 @@ document.getElementById('product-form').addEventListener('submit', function (e) 
     const product = new Product(name, price, year)
 
     const ui = new UI();
+
+    //Comprobación para confirmar que los campos del formulario no esten vacíos
+    if(name === '' || price === '' || year === '') {
+        ui.showMessage('Complete all fields please', 'danger');
+        return;
+    };
+
     ui.addProduct(product);
     ui.resetForm();
     ui.showMessage('Product Added Successfully', 'success');
