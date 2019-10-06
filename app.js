@@ -16,7 +16,7 @@ class UI {
                 <strong>Product Name</strong>: ${product.name}
                 <strong>Product Price</strong>: ${product.price}
                 <strong>Product Year</strong>: ${product.year}
-                
+                <a href="#" class="btn btn-danger" name="delete">🗑️</a>
             </div>
         </div>
         `;
@@ -25,6 +25,12 @@ class UI {
 
     resetForm() {
         document.getElementById('product-form').reset()
+    }
+
+    deleteProduct(element) { 
+        if(element.name === 'delete') {
+            element.parentElement.parentElement.parentElement.remove()
+        }
     }
 }
 
@@ -43,4 +49,11 @@ document.getElementById('product-form').addEventListener('submit', function (e) 
     ui.resetForm();
 
     e.preventDefault();
+})
+
+// Evento para capturar el click del botón delete
+document.getElementById('product-list').addEventListener('click', function(e) {
+    const ui = new UI();
+    ui.deleteProduct(e.target);
+
 })
