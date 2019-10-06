@@ -16,6 +16,7 @@ class UI {
                 <strong>Product Name</strong>: ${product.name}
                 <strong>Product Price</strong>: ${product.price}
                 <strong>Product Year</strong>: ${product.year}
+                
             </div>
         </div>
         `;
@@ -28,6 +29,8 @@ class UI {
 }
 
 // DOM Events
+
+// Evento para capturar el submit del formulario
 document.getElementById('product-form').addEventListener('submit', function (e) {
     const name = document.getElementById('name').value;
     const price = document.getElementById('price').value;
